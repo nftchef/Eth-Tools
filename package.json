@@ -13,7 +13,8 @@
     "commander": "^8.3.0",
     "dotenv": "^10.0.0",
     "ethers": "^5.5.1",
-    "firebase-admin": "^10.0.1"
+    "firebase-admin": "^10.0.1",
+    "keccak256": "^1.0.6"
   },
   "devDependencies": {},
   "description": ""

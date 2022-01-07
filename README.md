@@ -20,6 +20,20 @@ basic calculator to output gas cost in Eth,
 node index.js calc <gas used> <gas price in gwei>
 ```
 
+# Snapshot
+
+Take a snapshot of current token holders (wallet addresses) for a given contract address
+
+# Provenance Hash
+
+Generate a provenance hash from a folder.
+
+# Metadata Tools
+
+## Clean empty traits
+
+It's possible that your image generation left you with empty `trait_type` values, this command will remove any object with a `trait_type` whose sibling `value` is `""` empty.
+
 # Firebase Firestore Tools
 
 For use when an offchain allow-list is stored on FB
