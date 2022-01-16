@@ -87,6 +87,7 @@ program
     "-o --output <outputfile>",
     "define the filename to wite the snapshot result JSON to"
   )
+  .option("-s --start <start>", "Start the snapshot from a a <start> tokenID")
   .action((contract, count, options) => {
     snapshot.get(contract, count, options);
   });

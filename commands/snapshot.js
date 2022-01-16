@@ -29,14 +29,20 @@ module.exports = {
 
     new Promise(async (resolve) => {
       const wallets = new Set();
-      // query total owned
+      // query total owned, starting at 0 by default or the start index
       for (let i = 0; i < lookupCount; i++) {
         // console.log("checking owner of ", i);
 
         let owner;
         try {
-          console.log(`getting owner of token ${i}`);
-          owner = await contract.ownerOf(BigNumber.from(i));
+          console.log(
+            `getting owner of token ${
+              options.start ? Number(options.start) + i : i
+            }`
+          );
+          owner = await contract.ownerOf(
+            BigNumber.from(options.start ? Number(options.start) + i : i)
+          );
           console.log(owner);
           wallets.add(owner);
         } catch (error) {
