@@ -29,7 +29,7 @@ module.exports = {
     const lookupCount = Number(count);
 
     new Promise(async (resolve) => {
-      const wallets = [];
+      const wallets = new Set();
       // query total owned, starting at 0 by default or the start index
       for (let i = 0; i < lookupCount; i++) {
         // console.log("checking owner of ", i);
@@ -45,7 +45,7 @@ module.exports = {
             BigNumber.from(options.start ? Number(options.start) + i : i)
           );
           console.log(owner);
-          wallets.push(owner);
+          wallets.add(owner);
         } catch (error) {
           console.log("oops", error.message);
         }
