@@ -6,7 +6,6 @@ const fs = require("fs");
 const path = require("path");
 const { Command } = require("commander");
 const program = new Command();
-const chalk = require("chalk");
 
 const allowList = require("./commands/allowList");
 const snapshot = require("./commands/snapshot");
@@ -62,6 +61,36 @@ program
 
   .action(() => {
     allowList.count();
+  });
+
+program
+  .command("crosscheck <source>")
+  .description("given an uploaded list, check and remove duplicates")
+
+  .action((source) => {
+    allowList.crosscheck(source);
+  });
+
+program
+  .command("clean <source>")
+  .description(
+    "remove wallet ID's from the DB if they are not present in the verification dv"
+  );
+
+program
+  .command("remove <userID>")
+  .description(
+    "remove wallet ID's from the DB if they are not present in the verification dv"
+  );
+
+program
+  .command("add <userID> <walletAddress>")
+  .description(
+    "Add a user to both the role-verification db AND their wallet to the WL"
+  )
+
+  .action((userID, walletAddress) => {
+    allowList.add(userID, walletAddress);
   });
 
 program
@@ -122,6 +151,32 @@ program
 
   .action((inputdir, options) => {
     metadata.cleanEmptyTraits(inputdir, options);
+  });
+
+// TEMP:
+program
+  .command("fixTypo <inputdir> <incorrect> <correct>")
+  .description("fix a typo for a given attribute")
+  //TODO: add option to generate provenance from json attributes, too
+  .option(
+    "-o --output <outputDir>",
+    "output the provenance hash data to a custom file/location"
+  )
+
+  .action((inputdir, incorrect, correct, options) => {
+    metadata.fixTypo(inputdir, incorrect, correct, options);
+  });
+program
+  .command("fixTypes <inputdir>")
+  .description("fix a typo for a given attribute")
+  //TODO: add option to generate provenance from json attributes, too
+  .option(
+    "-o --output <outputDir>",
+    "output the provenance hash data to a custom file/location"
+  )
+
+  .action((inputdir, options) => {
+    metadata.fixTypes(inputdir, options);
   });
 
 program

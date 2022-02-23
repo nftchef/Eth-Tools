@@ -1,5 +1,7 @@
 run `yarn` before use.
 
+For available commands and syntax, check `node index.js --help`
+
 # Wallet/account tools
 
 Simple utility for generating an array of Ethereum wallet addresses.
@@ -23,6 +25,14 @@ node index.js calc <gas used> <gas price in gwei>
 # Snapshot
 
 Take a snapshot of current token holders (wallet addresses) for a given contract address
+
+```
+node index.js snapshot <contract address> <number of tokens to snapshot> [flags]
+```
+
+### options
+
+`--output`
 
 # Provenance Hash
 

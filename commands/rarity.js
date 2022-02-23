@@ -91,7 +91,7 @@ module.exports = {
     // TODO: Calculate rarity score
     console.log({ inputdir, options, count: dataset.length });
 
-    // console.log(totals);
-    console.table(ordered);
+    console.log(ordered);
+    // console.table(ordered);
   },
 };
